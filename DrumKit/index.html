@@ -64,11 +64,18 @@
       if (!audio) return
       audio.currentTime = 0;
       audio.play()
-      key.classList.toggle('playing')
-      window.setTimeout(()=>{
-        key.classList.toggle('playing')},75)
-
+      key.classList.add('playing')
     })
+
+    function endTransition(e) {
+      if (e.propertyName !== 'transform') return 
+      this.classList.remove('playing')
+    }
+
+    let keys = document.querySelectorAll('.key')
+    keys.forEach((el)=> el.addEventListener('transitionend', endTransition))
+
+ 
 </script>
 
 
