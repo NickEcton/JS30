@@ -71,6 +71,7 @@
   </style>
 
   <script>
+    const hands = document.querySelector('.hand')
     const secondHand = document.querySelector('.second-hand')
     const minuteHand = document.querySelector('.min-hand')
     const hourHand = document.querySelector('.hour-hand')
@@ -80,6 +81,15 @@
       let seconds = now.getSeconds()
       let minutes = now.getMinutes()
       let hours = now.getHours()
+      console.log(seconds)
+      if (seconds === 59) {
+        console.log(hands.style.transition)
+        hands.style.transition = 'none';
+        console.log(hands.style.transition)
+      } else {
+        hands.style.transition = 'all 0.05s';
+      }
+
 
       const secondsDegrees = ((seconds / 60) * 360) + 90
       secondHand.style.transform = `rotate(${secondsDegrees}deg)`
